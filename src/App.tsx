@@ -1,9 +1,10 @@
+import NotFound from "./Pages/NotFound/NotFound";
 
 
 
 function App() {
   return (
-    <div>hello world</div>
+    <div><NotFound/></div>
   );
 }
 

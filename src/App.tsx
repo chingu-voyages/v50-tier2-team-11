@@ -1,9 +1,12 @@
-
+import React from "react";
+import MenuItemDisplay from "./components/menuItemDisplay"
 
 
 function App() {
   return (
-    <div>hello world</div>
+    <div>
+      <MenuItemDisplay/>
+    </div>
   );
 }
 

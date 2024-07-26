@@ -3,11 +3,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import React, { Suspense, useState } from 'react';
 import loader from "../src/assests/loader.gif"
+import MenuItemDisplay from "./components/menuItemDisplay"
 
-
-const Home = React.lazy(() => import('./Components/Home'));
-const SignIn = React.lazy(() => import('./Components/Login'));
-const SignUp = React.lazy(() => import('./Components/Registration'));
+const Home = React.lazy(() => import('./components/Home'));
+const SignIn = React.lazy(() => import('./components/Login'));
+const SignUp = React.lazy(() => import('./components/Registration'));
 
 function App() {
   const [authLogin,setAuthLogin] = useState(sessionStorage?.getItem("Auth") != "" && sessionStorage?.getItem("Auth") != undefined ? sessionStorage?.getItem("Auth") : false)
@@ -22,7 +22,7 @@ function App() {
             :
             <Route path="/" element={ <SignIn setAuthLogin={setAuthLogin} />} />
           }
-          
+          <Route path="/menu" element={<MenuItemDisplay/>} />
         </Routes>
       </Suspense>
     </BrowserRouter>

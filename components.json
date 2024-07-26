@@ -10,8 +10,8 @@
   "rsc": false,
   "tsx": true,
   "aliases": {
-    "utils": "@/lib/utils",
-    "components": "@/components",
-    "ui": "@/components/ui"
+    "utils": "./src/lib/utils",
+    "components": "./src/components",
+    "ui": "./src/components/ui"
   }
 }

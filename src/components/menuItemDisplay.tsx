@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import MenuItem from "./MenuItem";
 
 const MenuItemDisplay: React.FC = () => {
   const [getAllMenus, setGetAllMenus] = useState<any[]>([]);
@@ -49,18 +50,8 @@ const MenuItemDisplay: React.FC = () => {
       <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {getAllMenus.map((item, index) => {
           return (
-            <li key={`${item.id}-${index}`} className="p-4 bg-white rounded-lg shadow-md">
-              <img src={item.img} alt={item.name} className="object-cover w-full h-64 mb-4 rounded-t-lg" />
-              <h2 className="mb-2 text-xl font-semibold">{item.name}</h2>
-              <p className="mb-2 text-gray-600">{item.dsc}</p>
-              {item.price !== undefined ? (
-                <p className="mb-2 text-lg font-bold">Price: ${item.price.toFixed(2)}</p>
-              ) : (
-                <p className="mb-2 text-lg font-bold">Price: N/A</p>
-              )}
-              <p className="mb-2 text-gray-600">Rating: {item.rate}</p>
-              <p className="mb-2 text-gray-600">Country: {item.country}</p>
-              <p className="text-gray-600">Location: {item.latitude}, {item.longitude}</p>
+            <li key={`${item.id}-${index}`}>
+              <MenuItem {...item}/>
             </li>
           );
         })}

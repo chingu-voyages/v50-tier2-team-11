@@ -46,13 +46,22 @@ const MenuItem = (prpos: MenuItemProps) => {
         Location: {latitude}, {longitude}
       </p>
       <div className="flex items-center mt-4">
-        <div className="flex items-center gap-2 mr-4">
-          <Button variant={"outline"} onClick={inscreaseOrder}>
-            <Plus />
+        <div className="flex items-center gap-2 mr-8">
+          <Button
+            variant={"outline"}
+            className="w-8 h-8 p-0 rounded-full"
+            onClick={inscreaseOrder}
+          >
+            <Plus size={16} />
           </Button>
           <span className="text-xl font-bold">{orderNumber}</span>
-          <Button variant={"outline"} onClick={decreaseOrder}>
-            <Minus />
+          <Button
+            variant={"outline"}
+            className="w-8 h-8 p-0 rounded-full"
+            onClick={decreaseOrder}
+            disabled={orderNumber <= 1}
+          >
+            <Minus size={16} />
           </Button>
         </div>
         <Button>Add to Cart</Button>

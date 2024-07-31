@@ -29,7 +29,7 @@ const MenuItem = (prpos: MenuItemProps) => {
   return (
     <>
     <div
-  className="animate__animated animate__zoomIn duration-500 group overflow-hidden relative rounded bg-neutral-800 text-neutral-50 p-4 flex flex-col justify-evenly"
+  className="min-h-full animate__animated animate__zoomIn duration-500 group overflow-hidden relative rounded bg-neutral-800 text-neutral-50 p-4 flex flex-col justify-evenly"
 >
   <div
     className="absolute blur duration-500 group-hover:blur-none w-72 h-72 rounded-full group-hover:translate-x-12 group-hover:translate-y-12 bg-sky-900 right-1 -bottom-24"

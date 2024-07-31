@@ -97,10 +97,12 @@ const FetchMenuItems: React.FC = () => {
                 <li>
                   <p
                     onClick={() => {
+                      setLoading(true)
                       setCategory(item)
                       // console.log("itemmmm",getAllMenus)
                       let filterArr = getAllMenus
                       setFilteredData(filterArr?.filter((item1: { category: string }) => item1?.category?.toLowerCase() == item))
+                      setLoading(false)
                       setPage(0)
                       setSearchFood("")
                     }}
@@ -114,7 +116,7 @@ const FetchMenuItems: React.FC = () => {
 
 
           </ul>
-          <div className="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+          <div className=" p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{category?.toUpperCase()}</h3>
             {loading ?
               <div className='flex items-center justify-center'><img width={"150px"} src={loader} alt="loader" /></div>

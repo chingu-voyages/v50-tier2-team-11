@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import Header from "./Header";
 import loader from "../../src/assests/loader.gif"
 import { ToastContainer, toast } from "react-toastify";
+import MenuItem from "./MenuItem";
+
 
 const FetchMenuItems: React.FC = () => {
   const [page, setPage] = useState<number>(0);
@@ -85,9 +86,7 @@ const FetchMenuItems: React.FC = () => {
 
   return (
     <>
-      {/* <Header /> */}
       <ToastContainer />
-
 
       <div className="bg-slate-900 p-6">
 
@@ -189,8 +188,9 @@ const FetchMenuItems: React.FC = () => {
                   <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredData?.slice((page * 10), (page * 10) + 10)?.map((item, index) => {
                       return (
-                        <li key={`${item.id}-${index}`} className="bg-white rounded-lg shadow-md p-4 animate__animated animate__zoomIn">
-                          <img src={item.img} alt={item.name} className="w-full h-64 object-cover rounded-t-lg mb-4" />
+                        <li key={`${item.id}-${index}`} >
+                          <MenuItem {...item} />
+                          {/* <img src={item.img} alt={item.name} className="w-full h-64 object-cover rounded-t-lg mb-4" />
                           <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
                           <p className="text-gray-600 mb-2">{item.dsc}</p>
                           {item.price !== undefined ? (
@@ -200,7 +200,7 @@ const FetchMenuItems: React.FC = () => {
                           )}
                           <p className="text-gray-600 mb-2">Rating: {item.rate}</p>
                           <p className="text-gray-600 mb-2">Country: {item.country}</p>
-                          <p className="text-gray-600">Location: {item.latitude}, {item.longitude}</p>
+                          <p className="text-gray-600">Location: {item.latitude}, {item.longitude}</p> */}
                         </li>
                       );
                     })}

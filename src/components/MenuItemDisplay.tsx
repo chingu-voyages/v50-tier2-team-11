@@ -8,7 +8,6 @@ import MenuItem from "./MenuItem";
 const FetchMenuItems: React.FC = () => {
   const [page, setPage] = useState<number>(0);
 
-
   const [getAllMenus, setGetAllMenus] = useState<any[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
   const [category, setCategory] = useState<string>('bbqs');
@@ -46,7 +45,7 @@ const FetchMenuItems: React.FC = () => {
             temp?.push(menuList)
           }
           setGetAllMenus(temp?.flat())
-          setFilteredData(temp?.flat()?.filter((item) => item?.category?.toLowerCase() == "bbqs"))
+          setFilteredData(temp?.flat()?.filter((item) => item?.category?.toLowerCase() === "bbqs"))
           setLoading(false)
         }
       }
@@ -77,7 +76,7 @@ const FetchMenuItems: React.FC = () => {
   }
 
   useEffect(() => {
-    searchFood == "" && setFilteredData(getAllMenus?.filter((item) => item?.category?.toLowerCase() == category))
+    searchFood === "" && setFilteredData(getAllMenus?.filter((item) => item?.category?.toLowerCase() == category))
   }, [searchFood])
 
 
@@ -88,10 +87,10 @@ const FetchMenuItems: React.FC = () => {
     <>
       <ToastContainer />
 
-      <div className="bg-slate-900 p-6">
+      <div className="p-6 bg-slate-900">
 
         <div className="md:flex">
-          <ul className="flex-column space-y space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
+          <ul className="mb-4 space-y-4 text-sm font-medium text-gray-500 flex-column space-y dark:text-gray-400 md:me-4 md:mb-0">
             {temparr?.map((item, index) => {
               return (
                 <li>
@@ -106,7 +105,7 @@ const FetchMenuItems: React.FC = () => {
                       setPage(0)
                       setSearchFood("")
                     }}
-                    className={category == item ? ActiveMenu : InActiveMenu}>
+                    className={category === item ? ActiveMenu : InActiveMenu}>
                     {item?.toUpperCase()}
                   </p>
                 </li>
@@ -116,15 +115,15 @@ const FetchMenuItems: React.FC = () => {
 
 
           </ul>
-          <div className=" p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{category?.toUpperCase()}</h3>
+          <div className="w-full p-6 text-gray-500 rounded-lg bg-gray-50 text-medium dark:text-gray-400 dark:bg-gray-800">
+            <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">{category?.toUpperCase()}</h3>
             {loading ?
               <div className='flex items-center justify-center'><img width={"150px"} src={loader} alt="loader" /></div>
               :
               <div>
 
                 <div className="flex items-center justify-center">
-                  <div className=" relative rounded-full overflow-hidden bg-white shadow-xl w-3/4">
+                  <div className="relative w-3/4 overflow-hidden bg-white rounded-full shadow-xl ">
                     <input
                       type="text"
                       name="text"
@@ -133,17 +132,17 @@ const FetchMenuItems: React.FC = () => {
                         setSearchFood(e.target.value)
                       }}
                       onKeyDown={(e) => {
-                        if (e.key == "Enter") {
+                        if (e.key === "Enter") {
                           handleSearch()
                         }
                       }}
                       placeholder="Search Food"
-                      className="input bg-transparent outline-none border-none pl-6 pr-10 py-3 w-full font-semibold"
+                      className="w-full py-3 pl-6 pr-10 font-semibold bg-transparent border-none outline-none input"
                     />
                     <div className="absolute right-2 top-[0.4em]">
                       <button
                         onClick={() => handleSearch}
-                        className="w-10 h-10 rounded-full bg-blue-600 group shadow-xl flex items-center justify-center relative overflow-hidden"
+                        className="relative flex items-center justify-center w-10 h-10 overflow-hidden bg-blue-600 rounded-full shadow-xl group"
                       >
                         <svg
                           width="40"
@@ -184,24 +183,24 @@ const FetchMenuItems: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="container mx-auto p-4">
-                  {/* <h1 className="text-3xl font-bold text-center mb-6">Menu</h1> */}
+                <div className="container p-4 mx-auto">
+                  {/* <h1 className="mb-6 text-3xl font-bold text-center">Menu</h1> */}
 
-                  <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {filteredData?.slice((page * 10), (page * 10) + 10)?.map((item, index) => {
                       return (
                         <li key={`${item.id}-${index}`} >
                           <MenuItem {...item} />
-                          {/* <img src={item.img} alt={item.name} className="w-full h-64 object-cover rounded-t-lg mb-4" />
-                          <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-                          <p className="text-gray-600 mb-2">{item.dsc}</p>
+                          {/* <img src={item.img} alt={item.name} className="object-cover w-full h-64 mb-4 rounded-t-lg" />
+                          <h2 className="mb-2 text-xl font-semibold">{item.name}</h2>
+                          <p className="mb-2 text-gray-600">{item.dsc}</p>
                           {item.price !== undefined ? (
-                            <p className="text-lg font-bold mb-2">Price: ${item.price.toFixed(2)}</p>
+                            <p className="mb-2 text-lg font-bold">Price: ${item.price.toFixed(2)}</p>
                           ) : (
-                            <p className="text-lg font-bold mb-2">Price: N/A</p>
+                            <p className="mb-2 text-lg font-bold">Price: N/A</p>
                           )}
-                          <p className="text-gray-600 mb-2">Rating: {item.rate}</p>
-                          <p className="text-gray-600 mb-2">Country: {item.country}</p>
+                          <p className="mb-2 text-gray-600">Rating: {item.rate}</p>
+                          <p className="mb-2 text-gray-600">Country: {item.country}</p>
                           <p className="text-gray-600">Location: {item.latitude}, {item.longitude}</p> */}
                         </li>
                       );
@@ -213,10 +212,10 @@ const FetchMenuItems: React.FC = () => {
 
                     <div className="flex">
 
-                      <button disabled={page == 0} onClick={() => handlePagePrevious()} className={page == 0 ? "flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-not-allowed" : "flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}>
+                      <button disabled={page === 0} onClick={() => handlePagePrevious()} className={page == 0 ? "flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-not-allowed" : "flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}>
                         Previous
                       </button>
-                      <button disabled={page + 1 == Math.ceil(filteredData?.length / 10)} onClick={() => handlePageNext()} className={page + 1 == Math.ceil(filteredData?.length / 10) ? "flex items-center justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-not-allowed" : "flex items-center justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}>
+                      <button disabled={page + 1 === Math.ceil(filteredData?.length / 10)} onClick={() => handlePageNext()} className={page + 1 == Math.ceil(filteredData?.length / 10) ? "flex items-center justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-not-allowed" : "flex items-center justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}>
                         Next
                       </button>
                     </div>

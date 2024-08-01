@@ -27,7 +27,7 @@ const Login: React.FC<{ setAuthLogin: (value: boolean) => void }> = ({ setAuthLo
           {
             // setLoginCriteria(true)
             toast.success("Login successful")
-            // setAuthLogin(true)
+            setAuthLogin(true)
             sessionStorage.setItem("Auth", "true");
             navigate("/")
           }

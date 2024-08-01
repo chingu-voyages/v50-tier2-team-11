@@ -8,10 +8,10 @@ const Home = React.lazy(() => import("./components/Home"));
 const SignIn = React.lazy(() => import("./components/Login"));
 const SignUp = React.lazy(() => import("./components/Registration"));
 const MenuItemDisplay = React.lazy(
-  () => import("./components/menuItemDisplay")
+  () => import("./components/MenuItemDisplay")
 );
-const NotFound = React.lazy(() => import("./pages/notFound/NotFound"));
-// const MealDetail = React.lazy(() => import("./components/singleMeal"));
+const NotFound = React.lazy(() => import("./pages/not-found/NotFound"));
+// const MealDetail = React.lazy(() => import("./components/SingleMeal"));
 
 function App() {
   const [authLogin, setAuthLogin] = useState(

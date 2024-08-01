@@ -15,8 +15,8 @@ const NotFound = React.lazy(() => import("./pages/not-found/NotFound"));
 
 function App() {
   const [authLogin, setAuthLogin] = useState(
-    sessionStorage?.getItem("Auth") != "" &&
-      sessionStorage?.getItem("Auth") != undefined
+    sessionStorage?.getItem("Auth") !== "" &&
+      sessionStorage?.getItem("Auth") !== undefined
       ? sessionStorage?.getItem("Auth")
       : false
   );

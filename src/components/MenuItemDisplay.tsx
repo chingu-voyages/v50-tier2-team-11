@@ -107,7 +107,7 @@ const FetchMenuItems: React.FC = () => {
   useEffect(() => {
     searchFood === "" &&
       setFilteredData(
-        getAllMenus?.filter((item) => item?.category?.toLowerCase() == category)
+        getAllMenus?.filter((item) => item?.category?.toLowerCase() === category)
       );
   }, [searchFood]);
 

@@ -32,7 +32,7 @@ const Login: React.FC<{ setAuthLogin: (value: boolean) => void }> = ({ setAuthLo
           }
           else{
             console.log(email,"Useeee",userDetails?.email)
-            userDetails?.email !== email ? toast.error("Wrong Email Address") : userDetails?.password != password ? toast.error("Wrong Password") : toast?.error("Invalid User")
+            userDetails?.email !== email ? toast.error("Wrong Email Address") : userDetails?.password !== password ? toast.error("Wrong Password") : toast?.error("Invalid User")
           }
         } else {
             toast.error("No user found create account first")

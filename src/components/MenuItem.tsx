@@ -1,7 +1,10 @@
 import { Plus, Minus } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import { cn } from "../lib/utils";
+import { OrderProps } from "./Order";
+import { useOrders } from "../contexts/OrderContext";
 
 export type MenuItemProps = {
   id: string;
@@ -15,20 +18,38 @@ export type MenuItemProps = {
   longitude: string;
 };
 
-const MenuItem = (prpos: MenuItemProps) => {
+const MenuItem = (props: MenuItemProps) => {
   const { id, name, img, dsc, price, rate, country, latitude, longitude } =
-    prpos;
-  const [orderNumber, setOrderNumber] = useState(1);
+    props;
+  const [orderQuantity, setOrderQuantity] = useState(1);
+  const [isOrdered, setIsOrdered] = useState(false);
+  const { orders, addOrder } = useOrders();
+
+  useEffect(() => {
+    setIsOrdered(orders.some((order) => order.id === id));
+  }, [id, orders]);
 
   const increaseOrder = () => {
-    setOrderNumber(orderNumber + 1);
+    setOrderQuantity(orderQuantity + 1);
   };
 
   const decreaseOrder = () => {
-    if (orderNumber > 1) {
-      setOrderNumber(orderNumber - 1);
+    if (orderQuantity > 1) {
+      setOrderQuantity(orderQuantity - 1);
     }
   };
+
+  const addToCart = () => {
+    addOrder({
+      id,
+      name,
+      image: img,
+      price: price!,
+      quantity: orderQuantity,
+      restaurant: country,
+    } as OrderProps);
+  };
+
   return (
     <>
       <div className="relative flex flex-col min-h-full p-4 overflow-hidden duration-500 rounded animate__animated animate__zoomIn group bg-neutral-800 text-neutral-50 justify-evenly">
@@ -58,7 +79,11 @@ const MenuItem = (prpos: MenuItemProps) => {
             Location: {latitude}, {longitude}
           </p>
           <div className="flex items-center mt-4">
-            <div className="flex items-center gap-2 mr-8">
+            <div
+              className={cn("flex items-center gap-2 mr-8", {
+                hidden: isOrdered,
+              })}
+            >
               <Button
                 variant={"outline"}
                 className="w-8 h-8 p-0 bg-transparent rounded-full"
@@ -66,17 +91,19 @@ const MenuItem = (prpos: MenuItemProps) => {
               >
                 <Plus size={16} />
               </Button>
-              <span className="text-xl font-bold">{orderNumber}</span>
+              <span className="text-xl font-bold">{orderQuantity}</span>
               <Button
                 variant={"outline"}
                 className="w-8 h-8 p-0 bg-transparent rounded-full"
                 onClick={decreaseOrder}
-                disabled={orderNumber <= 1}
+                disabled={orderQuantity <= 1}
               >
                 <Minus size={16} />
               </Button>
             </div>
-            <Button>Add to Cart</Button>
+            <Button disabled={isOrdered} onClick={addToCart}>
+              {isOrdered ? "Ordered" : "Add to Cart"}
+            </Button>
           </div>
         </div>
       </div>

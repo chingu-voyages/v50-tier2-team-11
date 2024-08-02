@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Suspense, useState } from "react";
 import loader from "../src/assests/loader.gif";
+import OrdersProvider from "./providers/OrderProvider";
 
 const Home = React.lazy(() => import("./components/Home"));
 const SignIn = React.lazy(() => import("./components/Login"));
@@ -41,7 +42,15 @@ function App() {
           ) : (
             <Route path="/" element={<SignIn setAuthLogin={setAuthLogin} />} />
           )}
-          <Route path="/menu" element={<MenuItemDisplay />} />
+
+          <Route
+            path="/menu"
+            element={
+              <OrdersProvider>
+                <MenuItemDisplay />
+              </OrdersProvider>
+            }
+          />
         </Routes>
       </Suspense>
     </BrowserRouter>

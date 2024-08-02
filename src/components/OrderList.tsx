@@ -1,7 +1,8 @@
-import React from "react";
+import { useMemo } from "react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
@@ -9,29 +10,20 @@ import {
 } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { ShoppingCart, Trash2 } from "lucide-react";
-import { useLocalStorage } from "../hooks/use-local-storage/useLocalStorage";
-import Order, { OrderProps } from "./Order";
+import Order from "./Order";
+import { useOrders } from "../contexts/OrderContext";
 
 const OrderList = () => {
-  // const { value, setItem } = useLocalStorage("orderList");
-  const value:OrderProps[] = [
-    {
-      id: 'order_1',
-      name: "Kings BBQ",
-      price: 89,
-      restaurant: "Kinston, NC",
-      image: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/66752/carolina-bbq-oink-sampler.1340b5a10cedc238cb2280306dd1d5a5.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-      order_quantity: 2
-    },
-    {
-      id: 'order_2',
-      name: "Zuppardi's Apizza",
-      price: 79,
-      restaurant: "West Haven, CT",
-      image: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/131840/choose-your-own-new-haven-style-pizza-6-pack.ab82828afc6172cdd4017556c15e36dd.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-      order_quantity: 1
-    },
-  ]
+  const { orders, clearOrders } = useOrders();
+  const totalPrice = useMemo(
+    () => orders.reduce((acc, order) => acc + order.price * order.quantity, 0),
+    [orders]
+  );
+
+  const handleClearOrders = () => {
+    clearOrders();
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -39,30 +31,28 @@ const OrderList = () => {
           <ShoppingCart size={24} className="transform -scale-x-100" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex flex-col justify-between h-full p-0">
-        <SheetHeader className="p-4">
+      <SheetContent className="flex flex-col w-5/6 gap-1 p-0 sm:gap-2">
+        <SheetHeader className="p-4 pb-2 m-0 shadow-sm">
           <SheetTitle>Order List</SheetTitle>
+          <SheetDescription>
+            {orders.length === 0
+              ? "Your cart is empty. Browse our menu and add some delicious items to your order!"
+              : "Thank you for your order! Add a tip to support our team and enjoy great service."}
+          </SheetDescription>
         </SheetHeader>
-        <div className="flex flex-col flex-1 gap-4 px-4">
-          {
-            value.map((item) => (
-              <Order key={item.id} {...item} />
-            ))
-          }
+        <div className="flex flex-col flex-grow h-[74vh] gap-4 px-4 overflow-auto">
+          {orders
+            ? orders.map((order) => <Order key={`order_${order.id}`} {...order} />)
+            : null}
         </div>
-        <SheetFooter className="flex items-center justify-between w-full px-4 pt-4 pb-2 sm:justify-between rounded-t-xl bg-slate-200">
-          <div className="font-bold">
-            <span>Total: </span>
-            {/* {(value as any[]).reduce((acc, item) => acc + item.price, 0)} */}
-            <span>
-              $50
-            </span>
-          </div>
+        <SheetFooter className="flex items-center justify-between w-full px-4 pt-4 pb-2 !flex-row sm:justify-between rounded-t-xl bg-slate-200">
+          <span className="font-bold">Total: ${totalPrice}</span>
           <div className="flex items-center gap-1">
             <Button type="submit">Purchase</Button>
             <Button
               variant={"outline"}
               className="flex items-center gap-1 text-red-500 bg-transparent border-red-500 hover:bg-red-400 hover:text-white"
+              onClick={handleClearOrders}
             >
               <Trash2 size={16} />
               <span>Clear All</span>

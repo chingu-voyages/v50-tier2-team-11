@@ -1,5 +1,5 @@
 export type useLocalStorageProps = {
-    value: unknown;
-    setItem: (value: unknown) => void;
-    removeItem: () => void;
+    getLocalData: () => any | null,
+    setLocalData: (value: unknown) => void;
+    removeLocalData: () => void;
 }

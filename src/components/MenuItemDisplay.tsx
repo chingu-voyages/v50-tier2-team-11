@@ -182,7 +182,7 @@ const FetchMenuItems: React.FC = () => {
                     />
                     <div className="absolute right-2 top-[0.4em]">
                       <button
-                        onClick={() => handleSearch}
+                        onClick={() => handleSearch()}
                         className="relative flex items-center justify-center w-10 h-10 overflow-hidden bg-blue-600 rounded-full shadow-xl group"
                       >
                         <svg

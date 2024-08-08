@@ -68,10 +68,10 @@ const FeedBackForm = () => {
             <ToastContainer />
             <div className="sm:container sm:p-8">
                 <div className="relative flex flex-col min-h-full p-4 overflow-hidden duration-500 rounded animate__animated animate__zoomIn group bg-[#013243] justify-evenly">
-                    <div className="absolute duration-500 rounded-full blur group-hover:blur-none w-72 h-72 group-hover:translate-x-12 group-hover:translate-y-12 bg-sky-900 right-1 -bottom-24"></div>
-                    <div className="absolute w-12 h-12 duration-500 bg-indigo-700 rounded-full blur group-hover:blur-none group-hover:translate-x-12 group-hover:translate-y-2 right-12 bottom-12"></div>
+                    <div className="absolute duration-500 rounded-full blur group-hover:blur-none w-72 h-72 group-hover:translate-x-12 group-hover:translate-y-12 bg-[#B87333] right-1 -bottom-24"></div>
+                    <div className="absolute w-12 h-12 duration-500 bg-[#013243] rounded-full blur group-hover:blur-none group-hover:translate-x-12 group-hover:translate-y-2 right-12 bottom-12"></div>
                     <div className="absolute duration-500 bg-indigo-800 rounded-full blur group-hover:blur-none w-36 h-36 group-hover:translate-x-12 group-hover:-translate-y-12 right-1 -top-12"></div>
-                    <div className="absolute w-24 h-24 duration-500 rounded-full blur group-hover:blur-none bg-sky-700 group-hover:-translate-x-12"></div>
+                    <div className="absolute w-24 h-24 duration-500 rounded-full blur group-hover:blur-none bg-[#013243] group-hover:-translate-x-12"></div>
                     <div className="z-10">
                         <div className=" flex flex-col align-middle text-center items-center pt-8">
                             <svg

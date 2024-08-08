@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Suspense, useState } from "react";
 import loader from "../src/assests/loader.gif";
 import OrdersProvider from "./providers/OrderProvider";
+import Header from "./components/header";
+import Registration from "./components/Registration";
 
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const SignIn = React.lazy(() => import("./components/Login"));
@@ -34,6 +36,7 @@ function App() {
           </div>
         }
       >
+        <Header/>
         <Routes>
           <Route
             path="/sign-in"
@@ -41,6 +44,7 @@ function App() {
           />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/Registration" element={<Registration/>}/>
           {authLogin ? (
             <Route path="/" element={<Home />} />
           ) : (

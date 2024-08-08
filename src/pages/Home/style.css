@@ -1,16 +1,16 @@
+.car-moving {
+  animation: car-move 10s ease-in-out infinite;
+  rotate: -45deg;
+}
 
-  
-  .car-moving {
-    animation: car-move 3s linear infinite;
-    rotate: -45deg;
+@keyframes car-move {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  @keyframes car-move {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+  50% {
+    transform: translateX(100%);
   }
-  
+  100% {
+    transform: translateX(-100%);
+  }
+}

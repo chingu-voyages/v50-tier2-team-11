@@ -18,13 +18,13 @@ const UserReview: React.FC<UserReviewProps> = ({ storeFeedback }) => {
         <Fragment>
             <Carousel
                 additionalTransfrom={0}
-                arrows
+                arrows={false}
                 autoPlay
                 autoPlaySpeed={1000}
                 centerMode={false}
                 className=""
                 containerClass="container-with-dots"
-                dotListClass=""
+                dotListClass="custom-dots-class"
                 draggable
                 focusOnSelect={false}
                 infinite={false}
@@ -65,7 +65,7 @@ const UserReview: React.FC<UserReviewProps> = ({ storeFeedback }) => {
                 rewindWithAnimation={false}
                 rtl={false}
                 shouldResetAutoplay
-                showDots={false}
+                showDots={true}
                 sliderClass=""
                 slidesToSlide={2}
                 swipeable

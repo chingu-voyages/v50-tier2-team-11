@@ -46,7 +46,7 @@ const Login: React.FC<{ setAuthLogin: (value: boolean) => void }> = ({ setAuthLo
                 <div className="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:m-10 sm:rounded-lg">
                     <div className="p-6 lg:w-1/2 xl:w-5/12 sm:p-12">
                         <div className="flex flex-col items-center mt-12">
-                            <h1 className="text-2xl font-extrabold xl:text-3xl">
+                            <h1 className="text-2xl text-[#B87333] font-extrabold xl:text-3xl">
                                 Sign In
                             </h1>
                             <div className="flex-1 w-full mt-8">
@@ -84,7 +84,7 @@ const Login: React.FC<{ setAuthLogin: (value: boolean) => void }> = ({ setAuthLo
                             </div>
                         </div>
                     </div>
-                    <div className="items-center flex-1 hidden text-center bg-orange-400 lg:flex">
+                    <div className="items-center flex-1 hidden text-center bg-[#013243] lg:flex">
                         <div className="w-full m-12 bg-center bg-no-repeat bg-contain xl:m-16"
                         >
                             <img className='w-full' src={BackgroundIMG} alt="" />

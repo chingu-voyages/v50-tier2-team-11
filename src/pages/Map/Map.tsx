@@ -11,6 +11,16 @@ const restaurantIcon = new L.Icon({
   popupAnchor: [0, -32],
 });
 
+const ChangeMapView = ({ center }: { center: [number, number] }) => {
+  const map = useMap();
+  useEffect(() => {
+    if (center) {
+      map.setView(center, map.getZoom(), { animate: true });
+    }
+  }, [center, map]);
+  return null;
+};
+
 const Map = () => {
   const [inputData, setInputdata] = useState("");
   const [restaurants, setRestaurants] = useState<any[]>([]);
@@ -54,17 +64,6 @@ const Map = () => {
     }
   };
 
-
-  const ChangeMapView = ({ center }: { center: [number, number] }) => {
-    const map = useMap();
-    useEffect(() => {
-      if (center) {
-        map.setView(center, 20, { animate: true });
-      }
-    }, [center, map]);
-    return null;
-  };
-
   return (
     <Fragment>
       <div className="">
@@ -95,11 +94,11 @@ const Map = () => {
           {errorMessage && <p>{errorMessage}</p>}
           {coordinates && (
             <MapContainer
-              key={`map-${coordinates.join(',')}`} 
+              key={`map-${coordinates.join(',')}`} // Force re-render with key
               center={coordinates}
-              zoom={18}
+              zoom={13}
               scrollWheelZoom={true}
-              style={{ height: "100%", width: "100%" }}
+              style={{ height: "500px", width: "100%" }}
             >
               <ChangeMapView center={coordinates} />
               <TileLayer

@@ -6,7 +6,7 @@ import loader from "../src/assests/loader.gif";
 import OrdersProvider from "./providers/OrderProvider";
 import Header from "./components/header";
 import Registration from "./components/Registration";
-
+import Footer from "./components/footer"
 const Home = React.lazy(() => import("./components/Home"));
 const SignIn = React.lazy(() => import("./components/Login"));
 const SignUp = React.lazy(() => import("./components/Registration"));
@@ -56,6 +56,8 @@ function App() {
             }
           />
         </Routes>
+        <Footer/>
+
       </Suspense>
     </BrowserRouter>
   );

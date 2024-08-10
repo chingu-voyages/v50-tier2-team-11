@@ -18,7 +18,7 @@ const Header: React.FC = () => {
           <Link to="/Home" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out">Home</Link>
           <Link to="/menu" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out">Menu</Link>
           <Link to="/sign-in" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out">Login</Link>
-          <Link to="/map-restaurants" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out">Map Restaurants</Link>
+          <Link to="/map" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out">Map Restaurants</Link>
           <Link to="/Registration" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out" >Registration</Link>
           <Link to="/About-us" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out" > About Us</Link>
           <Link to="/user-feedback" className="text-white hover:text-black hover:transition-all hover:duration-300 hover:ease-in-out"> Feedback</Link>
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
           <Link to="/Home" className="block px-4 py-2 text-black border-b border-black">Home</Link>
           <Link to="/menu" className="block px-4 py-2 text-black border-b border-black">Menu</Link>
           <Link to="/login" className="block px-4 py-2 text-black border-b border-black">Login</Link>
-          <Link to="/map-restaurants" className="block px-4 py-2 text-black border-b border-black">Map Restaurants</Link>
+          <Link to="/map" className="block px-4 py-2 text-black border-b border-black">Map Restaurants</Link>
           <Link to="/Registration" className="block px-4 py-2 text-black border-b border-black" >Registration</Link>
           <Link to="/About-us" className="block px-4 py-2 text-black border-black" >About Us</Link>
           <Link to="/user-feedback" className="block px-4 py-2 text-black border-black"> Feedback</Link>

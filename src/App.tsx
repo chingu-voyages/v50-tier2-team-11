@@ -36,7 +36,7 @@ function App() {
           </div>
         }
       >
-        <Header/>
+        <Header />
         <Routes>
           <Route
             path="/sign-in"
@@ -44,7 +44,7 @@ function App() {
           />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/Registration" element={<Registration/>}/>
+          <Route path="/Registration" element={<Registration />} />
           {authLogin ? (
             <Route path="/Home" element={<Home />} />
           ) : (

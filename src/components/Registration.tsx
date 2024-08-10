@@ -126,7 +126,7 @@ const Registration: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex-1 items-center bg-indigo-100 text-center hidden lg:flex">
+                    <div className="flex-1 items-center bg-[#013243] text-center hidden lg:flex">
                         <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
                         >
                             <img className='w-full' src={BackgroundIMG} alt="" />

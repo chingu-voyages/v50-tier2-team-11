@@ -8,12 +8,17 @@ import OrdersProvider from "./providers/OrderProvider";
 import Header from "./components/header";
 import Registration from "./components/Registration";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Footer from "./components/footer"
 const Home = React.lazy(() => import("./components/Home"));
 =======
 
 const Home = React.lazy(() => import("./pages/Home/Home"));
 >>>>>>> feat/Customer-Review
+=======
+
+const Home = React.lazy(() => import("./pages/Home/Home"));
+>>>>>>> feat/homepage
 const SignIn = React.lazy(() => import("./components/Login"));
 const SignUp = React.lazy(() => import("./components/Registration"));
 const MenuItemDisplay = React.lazy(

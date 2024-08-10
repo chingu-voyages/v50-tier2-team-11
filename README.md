@@ -1,7 +1,7 @@
 <div align="center">
     <img src="./src/assests/YumYum.png" width="300">
   <p>
-    <a href="nn">View App</a>
+    <a href="https://v50-tier2-team-11-three.vercel.app/">View App</a>
     &nbsp;·&nbsp;
     <a href="https://github.com/chingu-voyages/v50-tier2-team-11">Github Repo</a>
     &nbsp;·&nbsp;

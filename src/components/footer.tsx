@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <div className="text-center">
-              <h4>Zarrar Hassan</h4>
+              <h4>Zarrar Hussain</h4>
               <div className="flex justify-center mt-2 space-x-3">
                 <a href='https://github.com/Zarrarabid' target='_blank' rel='noopener noreferrer'>
                   <FontAwesomeIcon icon={faGithub} className='text-white hover:text-black' />

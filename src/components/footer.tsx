@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
             <div className="text-center">
               <h4>Sarah</h4>
               <div className="flex justify-center items-center mt-2 space-x-3">
-                <a href='nn' target='_blank' rel='noopener noreferrer'>
+                <a href='https://github.com/Sarah-M-Ahmed' target='_blank' rel='noopener noreferrer'>
                   <FontAwesomeIcon icon={faGithub} className='text-white hover:text-black' />
                 </a>
                 <a href='nn' target='_blank' rel='noopener noreferrer'>
